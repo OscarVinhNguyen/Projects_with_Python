@@ -8,7 +8,7 @@ robo_is_listening = sr.Recognizer()
 #listen
 with sr.Microphone() as mic:
 	print("Robo: I am ALWAYS listening...")
-	robo_is_listening.adjust_for_ambient_noise(mic)
+	robo_is_listening.adjust_for_ambient_noise(mic, duration=1)
 	audio = robo_is_listening.listen(mic, timeout=3)
 print("Robo: ...")
 try:
@@ -22,5 +22,5 @@ print("The meat bag says: " + you)
 #text = input("Type text for the robo to say: ")
 
 #talk!
-robo_speech.say("The meat bag says: " + you)
-robo_speech.runAndWait()
+#robo_speech.say("The meat bag says: " + you)
+#robo_speech.runAndWait()
