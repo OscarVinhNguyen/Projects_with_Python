@@ -79,8 +79,8 @@ player_2_shoot_timer = 0
 # projectile speed for all players
 proj_spd = 10
 
-player_1 = Player(mode='player', color=(50, 50, 250), x=50, y=win_h/2-25, spd=5, cooldown=90)
-player_2 = Player(mode='player', color=(50, 175, 50), x=win_w-100, y=win_h/2-25, spd=5, cooldown=90)
+player_1 = Player(mode='player', color=(50, 50, 250), x=50, y=win_h/2-25, spd=5, cooldown=60)
+player_2 = Player(mode='player', color=(50, 175, 50), x=win_w-100, y=win_h/2-25, spd=5, cooldown=60)
 
 player_1_has_control = True
 player_2_has_control = True
@@ -88,8 +88,8 @@ player_2_has_control = True
 # load, scale, and set sprites
 
 # player sprites
-spr_knight_file = pygame.image.load("spr_rpc_knight.png")
-spr_orc_file = pygame.image.load("spr_rpc_orc.png")
+spr_knight_file = pygame.image.load("spr_rpss_knight.png")
+spr_orc_file = pygame.image.load("spr_rpss_orc.png")
 
 spr_knight_scaled = sprite_scale(spr_knight_file, 32, 7, 3, 4)
 spr_orc_scaled = sprite_scale(spr_orc_file, 32, 7, 3, 4)
@@ -98,8 +98,8 @@ spr_knight = SpriteSheet(spr_knight_scaled, 7, 3)
 spr_orc = SpriteSheet(spr_orc_scaled, 7, 3)
 
 # projectile sprites
-spr_proj_file = pygame.image.load("spr_rpc_projectiles.png")
-spr_proj_scaled = sprite_scale(spr_proj_file, 32, 3, 1, 4)
+spr_proj_file = pygame.image.load("spr_rpss_projectiles.png")
+spr_proj_scaled = sprite_scale(spr_proj_file, 32, 3, 1, 3)
 spr_proj = SpriteSheet(spr_proj_scaled, 3, 1)
 
 spr2_proj_flipped = pygame.transform.flip(spr_proj_scaled, True, False)
@@ -157,10 +157,10 @@ while run:
             if keys[pygame.K_f]:
                 bullets.append(Projectile(player_1.x+16, player_1.y+16, 1, proj_spd, variety=0)) # rock
                 player_1_shoot_timer = player_1.cooldown
-            if keys[pygame.K_g]:
+            elif keys[pygame.K_g]:
                 bullets.append(Projectile(player_1.x+16, player_1.y+16, 1, proj_spd, variety=1)) # paper
                 player_1_shoot_timer = player_1.cooldown
-            if keys[pygame.K_h]:
+            elif keys[pygame.K_h]:
                 bullets.append(Projectile(player_1.x+16, player_1.y+16, 1, proj_spd, variety=2)) # scissors
                 player_1_shoot_timer = player_1.cooldown
 
@@ -182,10 +182,10 @@ while run:
             if keys[pygame.K_RSHIFT]:
                 bullets.append(Projectile(player_2.x-16, player_2.y+16, -1, proj_spd, variety=2)) # rock
                 player_2_shoot_timer = player_2.cooldown
-            if keys[pygame.K_RETURN]:
+            elif keys[pygame.K_RETURN]:
                 bullets.append(Projectile(player_2.x-16, player_2.y+16, -1, proj_spd, variety=1)) # paper
                 player_2_shoot_timer = player_2.cooldown
-            if keys[pygame.K_BACKSLASH]:
+            elif keys[pygame.K_BACKSLASH]:
                 bullets.append(Projectile(player_2.x-16, player_2.y+16, -1, proj_spd, variety=0)) # scissors
                 player_2_shoot_timer = player_2.cooldown
 
